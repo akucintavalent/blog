@@ -1,24 +1,68 @@
-# README
+# Blog app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Blog app will be a classic example of a blog website. You will create a fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+To get a local copy up and running follow these simple example steps.
 
-* System dependencies
+### Prerequisites
 
-* Configuration
+```
+Ruby
+rails version 7.x gem package
+```
 
-* Database creation
+### Setup
 
-* Database initialization
+Open terminal and go to the folder you want to store the repo in:
 
-* How to run the test suite
+```
+# For example
+cd Documents
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Clone the repo and move to the folder with the repo:
 
-* Deployment instructions
+```
+git clone git@github.com:akucintavalent/blog.git
+cd blog
+```
 
-* ...
+### Run Program
+
+In order to start and checkout the app you should run in your terminal:
+
+```
+rails s
+```
+
+Then open http://localhost:3000 in the browser.
+
+## Authors
+
+👤 **Bohdan Shcherbak**
+
+- [GitHub](https://github.com/akucintavalent)
+- [Twitter](https://twitter.com/ibodi828)
+- [LinkedIn](https://www.linkedin.com/in/bohdan-shcherbak/)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/AmaduKamara/ruby-enumerabble/issues).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Hat tip to anyone whose code was used
+- Inspiration
+- etc
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.
