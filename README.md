@@ -37,7 +37,7 @@ In order to start and checkout the app you should run in your terminal:
 rails s
 ```
 
-The open http://localhost:3000 in the browser 
+Then open http://localhost:3000 in the browser.
 
 ## Authors
 
