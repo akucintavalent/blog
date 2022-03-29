@@ -1,1 +1,30 @@
-<h1>Here is a given post for a given user</h1>
+<section class="post-section">
+  <% user = User.where(id: params[:user_id])[0] %>
+  <% if user %>
+    <% post = user.posts.where(id: params[:id])[0] %>
+    <% if post %>
+      <div class="post-item">
+        <h3>
+          "<%= post.title %>" by 
+          <a href="<%= users_path + '/' + post.author.id.to_s %>">
+            <%= post.author.name %>
+          </a>
+        </h3>
+        <p>Comments: <%= post.comments.length %>, Likes: <%= post.likes.length %></p>
+        <p><%= post.text %></p>
+        <div class="comments-section">
+          <% post.comments.each do |comment| %>
+            <p>
+              <a href="<%= users_path + '/' + comment.author.id.to_s %>"><%= comment.author.name %></a>: 
+              <%= comment.text %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    <% else %>
+      <h2>For user with id = <%= params[:user_id] %> there is no post with id = <%= params[:id] %></h2>
+    <% end %>
+  <% else %>
+    <h2>There is no user with id = <%= params[:user_id] %></h2>
+  <% end %>
+</section>
