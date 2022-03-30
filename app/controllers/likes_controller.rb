@@ -5,11 +5,8 @@ class LikesController < ApplicationController
     @like = Like.new(post: post, author: author)
 
     respond_to do |format|
-      if @like.save
-        format.html { redirect_to request.path }
-      else
-        format.html { redirect_to request.path }
-      end
+      @like.save
+      format.html { redirect_to request.path }
     end
   end
 end

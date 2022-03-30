@@ -16,11 +16,8 @@ class PostsController < ApplicationController
     @post = Post.new(author: author, title: title, text: text)
 
     respond_to do |format|
-      if @post.save
-        format.html { redirect_to "#{users_path}/#{current_user.id}" }
-      else
-        format.html { redirect_to "#{users_path}/#{current_user.id}" }
-      end
+      @post.save
+      format.html { redirect_to "#{users_path}/#{current_user.id}" }
     end
   end
 end
