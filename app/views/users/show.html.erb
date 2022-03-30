@@ -12,6 +12,9 @@
         <p>Number of posts: <%= user.posts.length %></p>
       </div>
     </div>
+    <% if user == current_user %>
+      <%= render partial: 'posts/new' %>
+    <% end %>
     <div class="bio">
       Bio
       <br>
@@ -25,6 +28,7 @@
           <h3><a href="<%= users_path + '/' + user.id.to_s + '/posts/' + post.id.to_s %>"><%= post.title %></a></h3>
           <p><%= post.text %></p>
           <p>Comments: <%= post.comments.length %>, Likes: <%= post.likes.length %></p>
+          <%= render partial: 'posts/like', locals: { url: "/users/#{user.id}/posts/#{post.id}/like", post: post } %>
         </li>
       <% end %>
     </ul>

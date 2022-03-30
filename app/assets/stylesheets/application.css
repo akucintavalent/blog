@@ -55,7 +55,8 @@
 
 .bio,
 .post-item,
-.comments-section {
+.comments-section,
+.new-post-form {
   border: 1px solid black;
   width: 100%;
 }
