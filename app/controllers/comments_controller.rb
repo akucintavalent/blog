@@ -1,9 +1,6 @@
 class CommentsController < ApplicationController
   def create
-    author = User.find(params['comment']['author_id'].to_i)
-    post = Post.find(params['comment']['post_id'].to_i)
-    text = params['comment']['text']
-    @comment = Comment.new(post: post, author: author, text: text)
+    @comment = current_user.comments.new(comment_params)
 
     respond_to do |format|
       if @comment.save
@@ -12,5 +9,11 @@ class CommentsController < ApplicationController
         format.html { redirect_to request.path, params: { success: false } }
       end
     end
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:author_id, :post_id, :text)
   end
 end
