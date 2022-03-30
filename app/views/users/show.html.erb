@@ -12,6 +12,9 @@
         <p>Number of posts: <%= user.posts.length %></p>
       </div>
     </div>
+    <% if user == current_user %>
+      <%= render partial: 'posts/new' %>
+    <% end %>
     <div class="bio">
       Bio
       <br>

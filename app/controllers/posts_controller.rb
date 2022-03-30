@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @new_post = Post.new
+    @post = Post.new
   end
 
   def create
@@ -15,15 +15,11 @@ class PostsController < ApplicationController
     text = params['post']['text']
     @post = Post.new(author: author, title: title, text: text)
 
-    path_array = request.path.split('/')
-    path_array.pop
-    url = path_array.join('/')
-
     respond_to do |format|
       if @post.save
-        format.html { redirect_to url, params: { success: true } }
+        format.html { redirect_to "#{users_path}/#{current_user.id}" }
       else
-        format.html { redirect_to url, params: { success: false } }
+        format.html { redirect_to "#{users_path}/#{current_user.id}" }
       end
     end
   end
