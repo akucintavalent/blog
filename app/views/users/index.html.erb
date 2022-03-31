@@ -1,6 +1,6 @@
 <section class="users-section">
   <ul class="users-list">
-    <% User.each do |user| %>
+    <% User.all.each do |user| %>
       <li class="user-item">
         <a href="<%= users_path + '/' + user.id.to_s %>">
           <img class="squared-pic" alt="User 1 profile image" src="<%= user.photo %>">
