@@ -4,11 +4,11 @@ class LikesController < ApplicationController
     @like.update_posts_likes_counter
 
     respond_to do |format|
-      if @like.save
-        flash[:notice] = 'Successfully created a like'
-      else
-        flash[:notice] = 'Failed to create a like'
-      end
+      flash[:notice] = if @like.save
+                         'Successfully created a like'
+                       else
+                         'Failed to create a like'
+                       end
       format.html { redirect_to request.path }
     end
   end

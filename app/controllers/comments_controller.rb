@@ -4,11 +4,11 @@ class CommentsController < ApplicationController
     @comment.update_posts_comments_counter
 
     respond_to do |format|
-      if @comment.save
-        flash[:notice] = 'Successfully created a comment'
-      else
-        flash[:notice] = 'Failed to create a comment'
-      end
+      flash[:notice] = if @comment.save
+                         'Successfully created a comment'
+                       else
+                         'Failed to create a comment'
+                       end
       format.html { redirect_to request.path }
     end
   end
