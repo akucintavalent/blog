@@ -10,7 +10,7 @@
             <%= post.author.name %>
           </a>
         </h3>
-        <p>Comments: <%= post.comments.length %>, Likes: <%= post.likes.length %></p>
+        <p>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
         <%= render partial: 'posts/like', locals: { url: "/users/#{user.id}/posts/#{post.id}/like", post: post } %>
         <p><%= post.text %></p>
         <div class="comments-section">
