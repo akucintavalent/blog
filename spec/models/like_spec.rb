@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  it 'Increments likes_counter' do
+  it 'Increments its post\'s likes_counter three times' do
     user = User.create!(name: 'Semen Dick', photo: 'https://incels.wiki/images/5/58/Francisco.jpg',
                         bio: 'Just a pretty boy. Roaaaaarrrrrr', posts_counter: 0)
     post = Post.create(author: user, title: 'This is a title', comments_counter: 333, likes_counter: 777)

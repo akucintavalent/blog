@@ -16,17 +16,17 @@ RSpec.describe User, type: :model do
     expect(last_3_posts[2].id).to be third_post.id
   end
 
-  it 'Creates an invalid user' do
+  it 'Creates an invalid user where name and posts_counter are nil' do
     invalid_user = User.create
     expect(invalid_user).to_not be_valid
   end
 
-  it 'Creates an invalid user' do
+  it 'Creates an invalid user where posts_counter is nil' do
     invalid_user = User.create(name: 'God')
     expect(invalid_user).to_not be_valid
   end
 
-  it 'Creates an invalid user' do
+  it 'Creates a valid user' do
     valid_user = User.create(name: 'God', posts_counter: 0)
     expect(valid_user).to be_valid
   end

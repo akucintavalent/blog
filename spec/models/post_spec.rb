@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  it 'Updates a user\'s posts_counter' do
+  it 'Updates its user\'s posts_counter' do
     user = User.create!(name: 'Semen Dick', photo: 'https://incels.wiki/images/5/58/Francisco.jpg',
                         bio: 'Just a pretty boy. Roaaaaarrrrrr', posts_counter: 0)
     post = Post.create!(author: user, title: 'Post title', text: 'This is my first post', comments_counter: 0,
@@ -24,35 +24,35 @@ RSpec.describe Post, type: :model do
     expect(five_recent_comments[1].id).to be second_comment.id
   end
 
-  it 'Creates invalid post (title, comments_counter, likes_counter)' do
+  it 'Creates invalid post where title, comments_counter, likes_counter are nil' do
     user = User.create!(name: 'Semen Dick', photo: 'https://incels.wiki/images/5/58/Francisco.jpg',
                         bio: 'Just a pretty boy. Roaaaaarrrrrr', posts_counter: 0)
     post = Post.create(author: user)
     expect(post).to_not be_valid
   end
 
-  it 'Creates invalid post (title length)' do
+  it 'Creates invalid post where title length is too long' do
     user = User.create!(name: 'Semen Dick', photo: 'https://incels.wiki/images/5/58/Francisco.jpg',
                         bio: 'Just a pretty boy. Roaaaaarrrrrr', posts_counter: 0)
     post = Post.create(author: user, title: 'WTF?' * 100, comments_counter: 0, likes_counter: 0)
     expect(post).to_not be_valid
   end
 
-  it 'Creates invalid post (comments_counter: -1)' do
+  it 'Creates invalid post where comments_counter is negative' do
     user = User.create!(name: 'Semen Dick', photo: 'https://incels.wiki/images/5/58/Francisco.jpg',
                         bio: 'Just a pretty boy. Roaaaaarrrrrr', posts_counter: 0)
     post = Post.create(author: user, title: 'TITLE', comments_counter: -1, likes_counter: 0)
     expect(post).to_not be_valid
   end
 
-  it 'Creates invalid post (comments_counter: -1)' do
+  it 'Creates invalid post where likes_counter is negative' do
     user = User.create!(name: 'Semen Dick', photo: 'https://incels.wiki/images/5/58/Francisco.jpg',
                         bio: 'Just a pretty boy. Roaaaaarrrrrr', posts_counter: 0)
     post = Post.create(author: user, title: 'TITLE', comments_counter: 1, likes_counter: -777)
     expect(post).to_not be_valid
   end
 
-  it 'Creates invalid post (comments_counter: -1)' do
+  it 'Creates invalid post where comments_counter is nil' do
     user = User.create!(name: 'Semen Dick', photo: 'https://incels.wiki/images/5/58/Francisco.jpg',
                         bio: 'Just a pretty boy. Roaaaaarrrrrr', posts_counter: 0)
     post = Post.create(author: user, title: 'TITLE', comments_counter: nil, likes_counter: 777)
@@ -66,7 +66,7 @@ RSpec.describe Post, type: :model do
     expect(post).to be_valid
   end
 
-  it 'Creates invalid post (title:"") ' do
+  it 'Creates invalid post where title is ""' do
     user = User.create!(name: 'Semen Dick', photo: 'https://incels.wiki/images/5/58/Francisco.jpg',
                         bio: 'Just a pretty boy. Roaaaaarrrrrr', posts_counter: 0)
     post = Post.create(author: user, title: '', comments_counter: 333, likes_counter: 777)
