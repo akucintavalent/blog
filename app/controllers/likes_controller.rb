@@ -1,9 +1,14 @@
 class LikesController < ApplicationController
   def create
     @like = current_user.likes.new(like_params)
+    @like.update_posts_likes_counter
 
     respond_to do |format|
-      @like.save
+      flash[:notice] = if @like.save
+                         'Successfully created a like'
+                       else
+                         'Failed to create a like'
+                       end
       format.html { redirect_to request.path }
     end
   end
