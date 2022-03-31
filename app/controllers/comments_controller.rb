@@ -4,10 +4,11 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to request.path, params: { success: true } }
+        flash[:notice] = 'Successfully created a comment'
       else
-        format.html { redirect_to request.path, params: { success: false } }
+        flash[:notice] = 'Failed to create a comment'
       end
+      format.html { redirect_to request.path }
     end
   end
 
