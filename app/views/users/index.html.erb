@@ -1,6 +1,6 @@
 <section class="users-section">
   <ul class="users-list">
-    <% User.all.each do |user| %>
+    <% User.each do |user| %>
       <li class="user-item">
         <a href="<%= users_path + '/' + user.id.to_s %>">
           <img class="squared-pic" alt="User 1 profile image" src="<%= user.photo %>">
@@ -9,7 +9,7 @@
           <a href="<%= users_path + '/' + user.id.to_s %>">
             <h3><%= user.name %></h3>
           </a>
-          <p>Number of posts: <%= user.posts.length %></p>
+          <p>Number of posts: <%= user.posts_counter %></p>
         </div>
       </li>
     <% end %>

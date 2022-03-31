@@ -9,7 +9,7 @@
         <a href="<%= users_path + '/' + user.id.to_s %>">
           <h3><%= user.name %></h3>
         </a>
-        <p>Number of posts: <%= user.posts.length %></p>
+        <p>Number of posts: <%= user.posts_counter %></p>
       </div>
     </div>
     <% if user == current_user %>
@@ -27,7 +27,7 @@
         <li class="post-item">
           <h3><a href="<%= users_path + '/' + user.id.to_s + '/posts/' + post.id.to_s %>"><%= post.title %></a></h3>
           <p><%= post.text %></p>
-          <p>Comments: <%= post.comments.length %>, Likes: <%= post.likes.length %></p>
+          <p>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
           <%= render partial: 'posts/like', locals: { url: "/users/#{user.id}/posts/#{post.id}/like", post: post } %>
         </li>
       <% end %>

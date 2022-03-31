@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
   def create
     @like = current_user.likes.new(like_params)
+    @like.update_posts_likes_counter
 
     respond_to do |format|
       if @like.save

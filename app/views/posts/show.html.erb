@@ -14,7 +14,7 @@
         <%= render partial: 'posts/like', locals: { url: "/users/#{user.id}/posts/#{post.id}/like", post: post } %>
         <p><%= post.text %></p>
         <div class="comments-section">
-          <% post.comments.each do |comment| %>
+          <% post.comments.includes(:author).each do |comment| %>
             <p>
               <a href="<%= users_path + '/' + comment.author.id.to_s %>"><%= comment.author.name %></a>: 
               <%= comment.text %>
