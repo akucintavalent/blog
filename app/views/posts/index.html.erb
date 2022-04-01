@@ -6,18 +6,10 @@
       <ul class="w-100 list-inline">
         <% user.posts.each do |post| %>
           <li class="w-100 mb-4">
-            <%= render partial: 'posts/post', locals: { user: user, post: post } %>
+            <%= render partial: 'posts/post', locals: { user: user, post: post, show_author: false } %>
             <div class="mt-4">
               <% post.last_5_comments.each do |comment| %>
-                <p class="mx-4 my-1 border-start px-2 mb-3 border-2 border-primary">
-                  <span class="">
-                    <%= comment.author.name %>:
-                  </span>
-                  
-                  <i>
-                    <%= comment.text %></p>
-                  </i>
-                </p>
+                <%= render partial: 'posts/comment', locals: { comment: comment } %>
               <% end %>
             </div>
           </li>

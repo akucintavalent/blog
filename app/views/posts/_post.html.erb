@@ -1,5 +1,15 @@
 <div class="d-flex flex-column shadow border-start border-4 border-success px-3 pt-3 bg-white">
-  <h4><a class="text-decoration-none" href="<%= users_path + '/' + user.id.to_s + '/posts/' + post.id.to_s %>"><%= post.title %></a></h4>
+  <h4>
+    <a class="text-decoration-none" href="<%= users_path + '/' + user.id.to_s + '/posts/' + post.id.to_s %>">
+      <%= post.title %>
+    </a>
+    <% if show_author %>
+      by 
+      <a class="text-decoration-none" href="<%= users_path + '/' + user.id.to_s %>">
+        <%= user.name %>
+      </a>
+    <% end %>
+  </h4>
   <p><%= post.text %></p>
   <div class="d-flex gap-1 align-self-end">
     <p><%= post.comments_counter %>&nbsp;💬</p>

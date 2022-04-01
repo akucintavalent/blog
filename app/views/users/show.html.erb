@@ -15,7 +15,7 @@
       <ul class="w-100 list-inline">
         <% user.last_3_posts.each do |post| %>
           <li class="w-100 mb-4">
-            <%= render partial: 'posts/post', locals: { user: user, post: post } %>
+            <%= render partial: 'posts/post', locals: { user: user, post: post, show_author: false } %>
           </li>
         <% end %>
       </ul>

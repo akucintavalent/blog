@@ -1,0 +1,11 @@
+<p class="mx-4 my-1 border-start px-2 mb-3 border-2 border-success">
+  <span class="">
+    <a class="text-decoration-none" href="<%= users_path + '/' + comment.author.id.to_s %>">
+      <%= comment.author.name %>:
+    </a>
+  </span>
+  
+  <i>
+    <%= comment.text %></p>
+  </i>
+</p>
