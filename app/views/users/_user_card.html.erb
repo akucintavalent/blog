@@ -1,0 +1,11 @@
+<div class="shadow p-2 d-flex mb-3">
+  <a href="<%= users_path + '/' + user.id.to_s %>">
+    <img class="squared-pic" alt="User 1 profile image" src="<%= user.photo %>">
+  </a>
+  <div class="px-4 d-flex w-100 justify-content-between flex-column">
+    <a class="pt-4 text-decoration-none text-success" href="<%= users_path + '/' + user.id.to_s %>">
+      <h3><%= user.name %></h3>
+    </a>
+    <p class="align-self-end text-muted">Number of posts: <%= user.posts_counter %></p>
+  </div>
+</div>

@@ -1,39 +1,31 @@
-<section class="user-section">
-  <% user = User.where(id: params[:id])[0] %>
-  <% if user %>
-    <div class="user-item">
-      <a href="<%= users_path + '/' + user.id.to_s %>">
-        <img class="squared-pic" alt="User 1 profile image" src="<%= user.photo %>">
-      </a>
-      <div class="username-container">
-        <a href="<%= users_path + '/' + user.id.to_s %>">
-          <h3><%= user.name %></h3>
-        </a>
-        <p>Number of posts: <%= user.posts_counter %></p>
-      </div>
-    </div>
-    <% if user == current_user %>
-      <%= render partial: 'posts/new' %>
-    <% end %>
-    <div class="bio">
-      Bio
-      <br>
-      <p>
-        <%= user.bio %>
-      </p>
-    </div>
-    <ul class="posts-list">
-      <% user.last_3_posts.each do |post| %>
-        <li class="post-item">
-          <h3><a href="<%= users_path + '/' + user.id.to_s + '/posts/' + post.id.to_s %>"><%= post.title %></a></h3>
-          <p><%= post.text %></p>
-          <p>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
-          <%= render partial: 'posts/like', locals: { url: "/users/#{user.id}/posts/#{post.id}/like", post: post } %>
-        </li>
+<section class="d-flex w-100 pt-5 justify-content-center">
+  <div class="w-50">
+    <% user = User.where(id: params[:id])[0] %>
+    <% if user %>
+      <%= render partial: 'users/user_card', locals: { user: user } %>
+      <% if user == current_user %>
+        <%= render partial: 'posts/new' %>
       <% end %>
-    </ul>
-    <a href="<%= users_path + '/' + user.id.to_s + '/posts' %>">See all posts</a>
-  <% else %>
-    <h2>There is no user with id = <%= params[:id] %></h2>
-  <% end %>
+      <div class="bio">
+        Bio
+        <br>
+        <p>
+          <%= user.bio %>
+        </p>
+      </div>
+      <ul class="posts-list">
+        <% user.last_3_posts.each do |post| %>
+          <li class="post-item">
+            <h3><a href="<%= users_path + '/' + user.id.to_s + '/posts/' + post.id.to_s %>"><%= post.title %></a></h3>
+            <p><%= post.text %></p>
+            <p>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
+            <%= render partial: 'posts/like', locals: { url: "/users/#{user.id}/posts/#{post.id}/like", post: post } %>
+          </li>
+        <% end %>
+      </ul>
+      <a href="<%= users_path + '/' + user.id.to_s + '/posts' %>">See all posts</a>
+    <% else %>
+      <h2>There is no user with id = <%= params[:id] %></h2>
+    <% end %>
+  </div>
 </section>

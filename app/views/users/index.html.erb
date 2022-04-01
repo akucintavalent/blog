@@ -1,16 +1,8 @@
-<section class="users-section">
-  <ul class="users-list">
+<section class="d-flex w-100 pt-5 justify-content-center">
+  <ul class="w-50 list-inline">
     <% User.all.each do |user| %>
-      <li class="user-item">
-        <a href="<%= users_path + '/' + user.id.to_s %>">
-          <img class="squared-pic" alt="User 1 profile image" src="<%= user.photo %>">
-        </a>
-        <div class="username-container">
-          <a href="<%= users_path + '/' + user.id.to_s %>">
-            <h3><%= user.name %></h3>
-          </a>
-          <p>Number of posts: <%= user.posts_counter %></p>
-        </div>
+      <li>
+        <%= render partial: 'users/user_card', locals: { user: user } %>
       </li>
     <% end %>
   </ul>
