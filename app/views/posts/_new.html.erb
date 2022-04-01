@@ -1,4 +1,4 @@
-<%= form_with model: Post.new, url: '/posts/create', class: 'w-100 d-flex flex-column my-5' do |form| %>
+<%= form_with model: Post.new, url: '/posts/create', class: 'w-100 d-flex flex-column mt-5 mb-3' do |form| %>
   <%= form.hidden_field :author_id, value: current_user.id %>
   <%= form.hidden_field :comments_counter, value: 0 %>
   <%= form.hidden_field :likes_counter, value: 0 %>

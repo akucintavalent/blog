@@ -1,5 +1,5 @@
-<%= form_with model: Like.new, url: url do |form| %>
+<%= form_with model: Like.new, url: url, class: 'm-0 p-0' do |form| %>
   <%= form.hidden_field :author_id, value: current_user.id %>
   <%= form.hidden_field :post_id, value: post.id %>
-  <%= form.submit 'Like' %>
+  <%= form.submit '♥', class: 'm-0 p-0 fas fa-heart mx-1 btn' %>
 <% end %>

@@ -1,0 +1,11 @@
+<div class="d-flex flex-column shadow border-start border-4 border-success px-3 pt-3 bg-white">
+  <h4><a class="text-decoration-none" href="<%= users_path + '/' + user.id.to_s + '/posts/' + post.id.to_s %>"><%= post.title %></a></h4>
+  <p><%= post.text %></p>
+  <div class="d-flex gap-1 align-self-end">
+    <p><%= post.comments_counter %>&nbsp;💬</p>
+    <div class="d-flex mx-2 justify-content">
+      <span><%= post.likes_counter %></span>
+      <%= render partial: 'posts/like', locals: { url: "/users/#{user.id}/posts/#{post.id}/like", post: post } %>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<section class="d-flex w-100 pt-5 justify-content-center">
+<section class="d-flex w-100 pt-5 pb-5 justify-content-center">
   <div class="w-50">
     <% user = User.where(id: params[:id])[0] %>
     <% if user %>
@@ -6,24 +6,22 @@
       <% if user == current_user %>
         <%= render partial: 'posts/new' %>
       <% end %>
-      <div class="bio">
-        Bio
-        <br>
+      <div class="mb-4">
+        <h5 class="text-success">Bio</h5>
         <p>
           <%= user.bio %>
         </p>
       </div>
-      <ul class="posts-list">
+      <ul class="w-100 list-inline">
         <% user.last_3_posts.each do |post| %>
-          <li class="post-item">
-            <h3><a href="<%= users_path + '/' + user.id.to_s + '/posts/' + post.id.to_s %>"><%= post.title %></a></h3>
-            <p><%= post.text %></p>
-            <p>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
-            <%= render partial: 'posts/like', locals: { url: "/users/#{user.id}/posts/#{post.id}/like", post: post } %>
+          <li class="w-100 mb-4">
+            <%= render partial: 'posts/post', locals: { user: user, post: post } %>
           </li>
         <% end %>
       </ul>
-      <a href="<%= users_path + '/' + user.id.to_s + '/posts' %>">See all posts</a>
+      <div class="d-flex justify-content-center">
+        <a class="btn border-2 border-success text-success" href="<%= users_path + '/' + user.id.to_s + '/posts' %>">See all posts</a>
+      <div>
     <% else %>
       <h2>There is no user with id = <%= params[:id] %></h2>
     <% end %>
