@@ -4,7 +4,7 @@
     <% if user %>
       <% post = user.posts.where(id: params[:id])[0] %>
       <% if post %>
-        <%= render partial: 'posts/post', locals: { user: user, post: post, show_author: false } %>
+        <%= render partial: 'posts/post', locals: { user: user, post: post, show_author: true } %>
         <div class="mt-4">
           <% post.comments.each do |comment| %>
             <%= render partial: 'posts/comment', locals: { comment: comment } %>
