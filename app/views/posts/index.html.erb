@@ -1,33 +1,22 @@
-<section class="posts-section">
-  <% user = User.where(id: params[:user_id])[0] %>
-  <% if user %>
-    <div class="user-item">
-      <a href="<%= users_path + '/' + user.id.to_s %>">
-        <img class="squared-pic" alt="User 1 profile image" src="<%= user.photo %>">
-      </a>
-      <div class="username-container">
-        <a href="<%= users_path + '/' + user.id.to_s %>">
-          <h3><%= user.name %></h3>
-        </a>
-        <p>Number of posts: <%= user.posts_counter %></p>
-      </div>
-    </div>
-    <ul class="posts-list">
-      <% user.posts.each do |post| %>
-        <li class="post-item">
-          <h3><a href="<%= users_path + '/' + user.id.to_s + '/posts/' + post.id.to_s %>"><%= post.title %></a></h3>
-          <p><%= post.text.slice(0, 100) + (post.text.length > 100 ? '...' : '') %></p>
-          <p>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
-          <%= render partial: 'posts/like', locals: { url: "/users/#{user.id}/posts/#{post.id}/like", post: post } %>
-          <div class="comments-section">
-            <% post.last_5_comments.each do |comment| %>
-              <p><%= comment.author.name %>: <%= comment.text %></p>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <h2>There is no user with id = <%= params[:user_id] %></h2>
-  <% end %>
+<section class="d-flex w-100 pt-5 pb-5 justify-content-center">
+  <div class="w-50">
+    <% user = User.where(id: params[:user_id])[0] %>
+    <% if user %>
+      <%= render partial: 'users/user_card', locals: { user: user } %>
+      <ul class="w-100 list-inline">
+        <% user.posts.each do |post| %>
+          <li class="w-100 mb-4">
+            <%= render partial: 'posts/post', locals: { user: user, post: post, show_author: false } %>
+            <div class="mt-4">
+              <% post.last_5_comments.each do |comment| %>
+                <%= render partial: 'posts/comment', locals: { comment: comment } %>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h2>There is no user with id = <%= params[:user_id] %></h2>
+    <% end %>
+  </div>
 </section>

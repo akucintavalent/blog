@@ -1,10 +1,10 @@
-<%= form_with model: Post.new, url: '/posts/create', class: 'new-post-form' do |form| %>
+<%= form_with model: Post.new, url: '/posts/create', class: 'w-100 d-flex flex-column mt-5 mb-3' do |form| %>
   <%= form.hidden_field :author_id, value: current_user.id %>
   <%= form.hidden_field :comments_counter, value: 0 %>
   <%= form.hidden_field :likes_counter, value: 0 %>
-  <%= form.text_field :title, placeholder: 'Title' %>
+  <%= form.text_field :title, placeholder: 'Title', class: 'w-100 py-2 px-3' %>
   <br>
-  <%= form.text_area :text, placeholder: 'Text' %>
+  <%= form.text_area :text, placeholder: 'Text', class: 'w-100 py-2 px-3'  %>
   <br>
-  <%= form.submit %>
+  <%= form.submit class: 'py-2 px-3 text-white btn btn-success align-self-end' %>
 <% end %>
