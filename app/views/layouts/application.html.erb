@@ -23,6 +23,13 @@
           </strong>
         </div>
       <% end %>
+      <% if flash[:alert] %>
+        <div class="w-50 alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>
+            <%= flash[:alert] %>
+          </strong>
+        </div>
+      <% end %>
       <%= yield %>
     </div>
 
