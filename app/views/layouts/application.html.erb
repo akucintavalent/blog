@@ -15,7 +15,9 @@
     <title>Blog</title>
   </head>
   <body>
-    <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+  <header>
+    <%= render 'layouts/navbar' %>
+  </header>
     <div class="container w-100 d-flex flex-column align-items-center">
       <% if flash[:notice] %>
         <div class="w-50 alert alert-warning alert-dismissible fade show" role="alert">
