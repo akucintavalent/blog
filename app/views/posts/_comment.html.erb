@@ -6,6 +6,7 @@
   </span>
   
   <i>
-    <%= comment.text %></p>
+    <%= comment.text %>
   </i>
+  <%= render partial: 'posts/delete_comment', locals: { comment: comment } %>
 </p>
