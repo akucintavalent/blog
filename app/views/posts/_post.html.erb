@@ -12,7 +12,7 @@
   </h4>
   <p><%= post.text %></p>
   <div class="d-flex gap-1 align-self-end">
-    <p><%= render partial: 'posts/delete_post', locals: { url: "/users/#{user.id}/posts/#{post.id}/like", post: post } %></p>
+    <p><%= render partial: 'posts/delete_post', locals: { url: "/users/#{user.id}/posts/#{post.id}/delete", post: post } %></p>
     <p><%= post.comments_counter %>&nbsp;💬</p>
     <div class="d-flex mx-2 justify-content">
       <span><%= post.likes_counter %></span>

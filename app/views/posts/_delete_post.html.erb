@@ -1,9 +1,6 @@
-<% if current_user.nil? %>
-  <i class="m-0 p-0 fa-solid fa-trash-can mx-1 btn"></i>
-<% else %>
-  <%= form_with model: Like.new, url: url, class: 'm-0 p-0' do |form| %>
-    <%= form.hidden_field :author_id, value: current_user.id %>
+<% unless current_user.nil? || cannot?(:destroy, post) %>
+  <%= form_with url: url, class: 'm-0 p-0 remove-post', method: :delete do |form| %>
     <%= form.hidden_field :post_id, value: post.id %>
-    <%= form.submit '♥', class: 'm-0 p-0 fa-solid fa-trash-can mx-1 btn' %>
+    <%= button_to '', '#', class: 'm-0 p-0 fa-solid fa-trash-can mx-1 btn', onclick: 'this.parentNode.submit()' %>
   <% end %>
 <% end %>

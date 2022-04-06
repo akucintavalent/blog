@@ -24,6 +24,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    post = Post.find(params[:post_id])
+    post.author.decrement!(:posts_counter)
+    post.destroy
+    flash[:notice] = 'Post was successfully removed'
+    redirect_to request.path
+  end
+
   private
 
   def post_params

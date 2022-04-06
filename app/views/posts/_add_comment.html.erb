@@ -1,4 +1,4 @@
-<% unless current_user.nil? %>
+<% if can? :create, Comment %>
   <%= form_with model: Comment.new, url: request.url + '/create_comment' do |form| %>
     <%= form.hidden_field :author_id, value: current_user.id %>
     <%= form.hidden_field :post_id, value: @post.id %>
