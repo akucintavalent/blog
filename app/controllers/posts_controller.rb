@@ -30,9 +30,7 @@ class PostsController < ApplicationController
     post.destroy
     flash[:notice] = 'Post was successfully removed'
     splitted_path = params[:url].split('/')
-    if splitted_path.length == 7 # If the user removed the post while being on its page
-      splitted_path.pop
-    end
+    splitted_path.pop if splitted_path.length == 7 # If the user removed the post while being on its page
     redirect_to params[:url]
   end
 
