@@ -31,6 +31,24 @@ cd blog
 
 ### Run Program
 
+First, you need to install the required gems:
+
+```
+bundle install
+```
+
+Then you need to create a database:
+
+```
+rails db:create
+```
+
+Then you need to run migrations:
+
+```
+rails db:migrate
+```
+
 In order to start and checkout the app you should run in your terminal:
 
 ```
