@@ -17,6 +17,7 @@ class Ability
     can :read, :all
     can :manage, Post, author_id: user.id
     can :manage, Comment, author_id: user.id
+    can :manage, Comment, post: { author_id: user.id }
     can :manage, Like, author_id: user.id
     can :create, Comment
     can :create, Like
