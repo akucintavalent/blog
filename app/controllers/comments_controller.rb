@@ -13,6 +13,14 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    comment = Comment.find(params[:comment_id])
+    comment.post.decrement!(:comments_counter)
+    comment.destroy
+    flash[:notice] = 'Comment was successfully removed'
+    redirect_to request.path
+  end
+
   private
 
   def comment_params

@@ -24,6 +24,16 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    post = Post.find(params[:post_id])
+    post.author.decrement!(:posts_counter)
+    post.destroy
+    flash[:notice] = 'Post was successfully removed'
+    splitted_path = params[:url].split('/')
+    splitted_path.pop if splitted_path.length == 7 # If the user removed the post while being on its page
+    redirect_to params[:url]
+  end
+
   private
 
   def post_params

@@ -1,11 +1,13 @@
-<p class="mx-4 my-1 border-start px-2 mb-3 border-2 border-success">
-  <span class="">
-    <a class="text-decoration-none" href="<%= users_path + '/' + comment.author.id.to_s %>">
-      <%= comment.author.name %>:
-    </a>
-  </span>
+<div class="d-flex justify-content-start mx-4 my-1 border-start px-2 mb-3 border-2 border-success">
+  <a class="text-decoration-none" href="<%= users_path + '/' + comment.author.id.to_s %>">
+    <%= comment.author.name %>:&nbsp;
+  </a>
   
   <i>
-    <%= comment.text %></p>
+    <%= comment.text %>
   </i>
-</p>
+
+  <div class="ms-auto">
+    <%= render partial: 'posts/delete_comment', locals: { comment: comment } %>
+  </div>
+</div>
