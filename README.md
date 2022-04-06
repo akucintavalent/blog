@@ -57,6 +57,8 @@ rails s
 
 Then open http://localhost:3000 in the browser.
 
+[Here](https://youtu.be/ASm7hJsg7CA) is a quick video demonstration showing how to clone, set up, run, and use this web aplication.
+
 ## Authors
 
 👤 **Bohdan Shcherbak**
