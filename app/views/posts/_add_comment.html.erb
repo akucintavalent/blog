@@ -1,7 +1,9 @@
-<%= form_with model: Comment.new, url: request.url + '/create_comment' do |form| %>
-  <%= form.hidden_field :author_id, value: current_user.id %>
-  <%= form.hidden_field :post_id, value: @post.id %>
-  <a class="text-decoration-none" href="<%= users_path + '/' + current_user.id.to_s %>"><%= current_user.name %>:</a>
-  <%= form.text_area :text, size: "10x2", class: 'w-100 p-2 my-2' %>
-  <%= form.submit class: 'btn border-2 border-success text-success' %>
+<% unless current_user.nil? %>
+  <%= form_with model: Comment.new, url: request.url + '/create_comment' do |form| %>
+    <%= form.hidden_field :author_id, value: current_user.id %>
+    <%= form.hidden_field :post_id, value: @post.id %>
+    <a class="text-decoration-none" href="<%= users_path + '/' + current_user.id.to_s %>"><%= current_user.name %>:</a>
+    <%= form.text_area :text, size: "10x2", class: 'w-100 p-2 my-2' %>
+    <%= form.submit class: 'btn border-2 border-success text-success' %>
+  <% end %>
 <% end %>
