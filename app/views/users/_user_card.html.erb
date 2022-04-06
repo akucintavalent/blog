@@ -1,6 +1,10 @@
 <div class="shadow bg-white p-2 d-flex mb-3">
   <a href="<%= users_path + '/' + user.id.to_s %>">
-    <img class="squared-pic" alt="User 1 profile image" src="<%= user.photo %>">
+    <% if user.photo? %>
+      <img class="squared-pic" alt="User 1 profile image" src="<%= user.photo %>">
+    <% else %>
+      <%= image_tag "avatar.png", class: "squared-pic" %>
+    <% end %>
   </a>
   <div class="px-4 d-flex w-100 justify-content-between flex-column">
     <a class="pt-4 text-decoration-none text-success" href="<%= users_path + '/' + user.id.to_s %>">
