@@ -59,6 +59,21 @@ Then open http://localhost:3000 in the browser.
 
 [Here](https://youtu.be/ASm7hJsg7CA) is a quick video demonstration showing how to clone, set up, run, and use this web aplication.
 
+## Views of the Web Application
+
+![image](https://user-images.githubusercontent.com/87897753/162081150-ab629a11-262e-4af7-b875-40e80bbad5d3.png)
+
+![image](https://user-images.githubusercontent.com/87897753/162080806-6791d66e-51ac-4318-9f9f-048eaba48c82.png)
+
+![image](https://user-images.githubusercontent.com/87897753/162080365-f69a96aa-32ee-425b-999b-479fbf7d9106.png)
+
+![image](https://user-images.githubusercontent.com/87897753/162080461-15cc71af-e8a0-4133-8e2d-ffba049eb438.png)
+
+![image](https://user-images.githubusercontent.com/87897753/162080502-fd4d9844-4984-452c-9145-0d3ed06fb8da.png)
+
+![image](https://user-images.githubusercontent.com/87897753/162080554-9d4fccb8-fe28-4f39-9ad7-1dd090f3ca1a.png)
+
+
 ## Authors
 
 👤 **Bohdan Shcherbak**
