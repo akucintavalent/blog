@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Users index page', type: :system do
+RSpec.describe 'Users show page', type: :system do
   let!(:user) do
     User.create!(
       name: 'Bodia',
@@ -110,7 +110,7 @@ RSpec.describe 'Users index page', type: :system do
     expect(page).to have_link('See all posts')
   end
 
-  it 'checks if there a link "See all posts"' do
+  it 'cclick the second post and checks if the lonk goes to the right page' do
     visit '/users/sign_in'
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: user.password
@@ -121,7 +121,7 @@ RSpec.describe 'Users index page', type: :system do
     expect(page).to have_current_path("/users/#{user.id}/posts/#{posts[1].id}")
   end
 
-  it 'checks if there a link "See all posts"' do
+  it 'clicks the link "See all posts" and checks if the lonk goes to the right page' do
     visit '/users/sign_in'
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: user.password
