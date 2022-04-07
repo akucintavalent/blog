@@ -15,28 +15,28 @@ RSpec.describe 'Users show page', type: :system do
   let!(:posts) do
     [
       Post.create!(
-        author: user, 
+        author: user,
         title: 'To jest tytył',
         text: 'A to jest juz tekst',
         likes_counter: 0,
         comments_counter: 0
       ),
       Post.create!(
-        author: user, 
+        author: user,
         title: 'This is a title',
         text: 'This is text',
         likes_counter: 0,
         comments_counter: 0
       ),
       Post.create!(
-        author: user, 
+        author: user,
         title: 'To jest tytył 2',
         text: 'A to jest juz tekst 2',
         likes_counter: 0,
         comments_counter: 0
       ),
       Post.create!(
-        author: user, 
+        author: user,
         title: 'This is a title 2',
         text: 'This is text 2',
         likes_counter: 0,
@@ -75,7 +75,6 @@ RSpec.describe 'Users show page', type: :system do
 
     expect(page).to have_content("Number of posts: #{user.posts_counter}")
   end
-
 
   it 'checks if there is a correct number of posts' do
     visit '/users/sign_in'

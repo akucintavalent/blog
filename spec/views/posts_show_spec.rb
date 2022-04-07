@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
+
 RSpec.describe 'Posts show page', type: :system do
   let!(:user) do
     User.create!(
@@ -15,14 +17,14 @@ RSpec.describe 'Posts show page', type: :system do
   let!(:posts) do
     [
       Post.create!(
-        author: user, 
+        author: user,
         title: 'To jest tytył',
         text: 'A to jest juz tekst',
         likes_counter: 0,
         comments_counter: 0
       ),
       Post.create!(
-        author: user, 
+        author: user,
         title: 'This is a title',
         text: 'This is text',
         likes_counter: 0,
@@ -62,7 +64,7 @@ RSpec.describe 'Posts show page', type: :system do
         author: user,
         post: posts[1],
         text: 'A to jest szósty komentarz'
-      ),
+      )
     ]
   end
 
@@ -101,7 +103,6 @@ RSpec.describe 'Posts show page', type: :system do
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: user.password
     click_button 'Log in'
-    comment = comments[0]
     visit "/users/#{user.id}/posts/#{posts[1].id}"
 
     expect(page).to have_content("#{posts[1].comments.length} 💬")
@@ -141,3 +142,5 @@ RSpec.describe 'Posts show page', type: :system do
     end
   end
 end
+
+# rubocop:enable Metrics/BlockLength

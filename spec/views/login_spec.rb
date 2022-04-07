@@ -21,7 +21,8 @@ RSpec.describe 'Login page', type: :system do
 
   it 'inputs proper credentials' do
     visit '/users/sign_in'
-    User.create!(name: 'Goodman', email: 'bogdan@example.com', password: 'password', confirmed_at: Time.now, posts_counter: 0)
+    User.create!(name: 'Goodman', email: 'bogdan@example.com', password: 'password', confirmed_at: Time.now,
+                 posts_counter: 0)
     fill_in 'user_email', with: 'bogdan@example.com'
     fill_in 'user_password', with: 'password'
     click_button 'Log in'
@@ -30,7 +31,8 @@ RSpec.describe 'Login page', type: :system do
 
   it 'inputs proper credentials' do
     visit '/users/sign_in'
-    User.create!(name: 'Goodman', email: 'bogdan@example.com', password: 'password', confirmed_at: Time.now, posts_counter: 0)
+    User.create!(name: 'Goodman', email: 'bogdan@example.com', password: 'password', confirmed_at: Time.now,
+                 posts_counter: 0)
     fill_in 'user_email', with: 'bogdan@example.com'
     fill_in 'user_password', with: 'passsword'
     click_button 'Log in'

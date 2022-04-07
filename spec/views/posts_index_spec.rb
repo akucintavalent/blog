@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
+
 RSpec.describe 'Posts index page', type: :system do
   let!(:user) do
     User.create!(
@@ -15,28 +17,28 @@ RSpec.describe 'Posts index page', type: :system do
   let!(:posts) do
     [
       Post.create!(
-        author: user, 
+        author: user,
         title: 'To jest tytył',
         text: 'A to jest juz tekst',
         likes_counter: 0,
         comments_counter: 0
       ),
       Post.create!(
-        author: user, 
+        author: user,
         title: 'This is a title',
         text: 'This is text',
         likes_counter: 0,
         comments_counter: 0
       ),
       Post.create!(
-        author: user, 
+        author: user,
         title: 'To jest tytył 2',
         text: 'A to jest juz tekst 2',
         likes_counter: 0,
         comments_counter: 0
       ),
       Post.create!(
-        author: user, 
+        author: user,
         title: 'This is a title 2',
         text: 'This is text 2',
         likes_counter: 0,
@@ -76,7 +78,7 @@ RSpec.describe 'Posts index page', type: :system do
         author: user,
         post: posts[1],
         text: 'A to jest szósty komentarz'
-      ),
+      )
     ]
   end
 
@@ -141,7 +143,7 @@ RSpec.describe 'Posts index page', type: :system do
     visit "/users/#{user.id}/posts"
 
     5.times do |i|
-      expect(page).to have_content(comments[i+1].text)
+      expect(page).to have_content(comments[i + 1].text)
     end
     expect(page).not_to have_content(comments[0].text)
   end
@@ -151,11 +153,10 @@ RSpec.describe 'Posts index page', type: :system do
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: user.password
     click_button 'Log in'
-    comment = comments[0]
     visit "/users/#{user.id}/posts"
 
     expect(page).to have_content("#{posts[1].comments.length} 💬")
-    expect(page).to have_content("0 💬")
+    expect(page).to have_content('0 💬')
   end
 
   it 'checks if there are proper numbers of likes' do
@@ -169,7 +170,6 @@ RSpec.describe 'Posts index page', type: :system do
     expect(page).to have_content("💬\n#{posts[0].likes.length}")
     expect(page).to have_content("💬\n0")
   end
-
 
   it 'checks if there is a button called Pagination' do
     visit '/users/sign_in'
@@ -192,3 +192,5 @@ RSpec.describe 'Posts index page', type: :system do
     expect(page).to have_current_path("/users/#{user.id}/posts/#{posts[2].id}")
   end
 end
+
+# rubocop:enable Metrics/BlockLength

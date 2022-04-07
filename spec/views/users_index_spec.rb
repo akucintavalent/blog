@@ -32,7 +32,7 @@ RSpec.describe 'Users index page', type: :system do
     fill_in 'user_email', with: users[0].email
     fill_in 'user_password', with: users[0].password
     click_button 'Log in'
-    
+
     users.each do |user|
       expect(page).to have_content(user.name)
     end
@@ -43,7 +43,7 @@ RSpec.describe 'Users index page', type: :system do
     fill_in 'user_email', with: users[0].email
     fill_in 'user_password', with: users[0].password
     click_button 'Log in'
-    
+
     expect(page.all(:css, 'img.squared-pic').length).to be users.length
   end
 
@@ -52,7 +52,7 @@ RSpec.describe 'Users index page', type: :system do
     fill_in 'user_email', with: users[0].email
     fill_in 'user_password', with: users[0].password
     click_button 'Log in'
-    
+
     users.each do |user|
       expect(page).to have_content("Number of posts: #{user.posts_counter}")
     end
@@ -63,8 +63,8 @@ RSpec.describe 'Users index page', type: :system do
     fill_in 'user_email', with: users[2].email
     fill_in 'user_password', with: users[2].password
     click_button 'Log in'
-    
-    page.all(:css, 'img.squared-pic')[0].click()
+
+    page.all(:css, 'img.squared-pic')[0].click
     expect(page).to have_current_path("/users/#{users[0].id}")
   end
 end
