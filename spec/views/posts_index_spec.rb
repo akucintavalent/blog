@@ -122,7 +122,7 @@ RSpec.describe 'Posts index page', type: :system do
     expect(page).to have_content("Number of posts: #{user.posts_counter}")
   end
 
-  it 'checks if there are all posts listed' do
+  it 'checks if there are all post titles listed' do
     visit '/users/sign_in'
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: user.password
@@ -131,7 +131,18 @@ RSpec.describe 'Posts index page', type: :system do
 
     posts.each do |post|
       expect(page).to have_content(post.title)
-      expect(page).to have_content(post.text)
+    end
+  end
+
+  it 'checks if there are all post texts listed' do
+    visit '/users/sign_in'
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
+    click_button 'Log in'
+    visit "/users/#{user.id}/posts"
+
+    posts.each do |post|
+      expect(page).to have_content(post.text.slice(0, 150))
     end
   end
 

@@ -85,6 +85,15 @@ RSpec.describe 'Posts show page', type: :system do
     visit "/users/#{user.id}/posts/#{posts[1].id}"
 
     expect(page).to have_content(posts[1].title)
+  end
+
+  it 'checks if there is title and text of the post' do
+    visit '/users/sign_in'
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
+    click_button 'Log in'
+    visit "/users/#{user.id}/posts/#{posts[1].id}"
+
     expect(page).to have_content(posts[1].text)
   end
 
