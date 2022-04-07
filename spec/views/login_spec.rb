@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Login page', type: :system do
-  # before(:each) do
-  #   visit '/users/sign_in'
-  # end
-
   it 'shows the login page' do
     visit '/users/sign_in'
     expect(page).to have_content('Log in')
