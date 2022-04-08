@@ -27,18 +27,18 @@ class CommentsController < ApplicationController
   # rubocop:disable Naming/AccessorMethodName
 
   def get_comments
-    user = User.find(params[:user_id])
-    post = user.posts.find(params[:post_id])
+    user = User.where(id: params[:user_id])[0]
 
     respond_to do |format|
       if user
+        post = user.posts.where(id: params[:post_id])[0]
         if post
           format.json { render json: post.comments }
         else
-          format.json { render json: { success: false, message: ['Post doesn\'t exist'] } }
+          format.json { render json: { success: false, message: ['Post must exist'] } }
         end
       else
-        format.json { render json: { success: false, message: ['User doesn\'t exist'] } }
+        format.json { render json: { success: false, message: ['User must exist'] } }
       end
     end
   end
