@@ -57,9 +57,16 @@ rails s
 
 Then open http://localhost:3000 in the browser.
 
-### API documentation
+## API documentation
 
-## **Endpoints**
+This is the documentation of the Blog App API service we created for this project.
+### **Base URL**
+
+If your are running this project from your local machine Base URL is 
+
+[http://localhost:3000](http://localhost:3000)
+
+### **Endpoints**
 
 **/api/posts**
 
@@ -75,11 +82,11 @@ Parameters example for GET action (sent in the body of the request in JSON forma
   
 ```
 { 
-	"user_id": 1 
+  "user_id": 1 
 }
 ```
 
-Return value: posts, Example Response:
+Return value: list of posts, Example Response:
 
 ```
 [
@@ -121,12 +128,12 @@ Parameters example for POST action (sent in the body of the request in JSON form
 
 ```
 { 
-	"email": "test@example.com",
+  "email": "test@example.com",
   "password": "password" 
 }
 ```
 
-Example Response:
+Return value: unique authentication token. Example Response:
 
 ```
 {
@@ -151,11 +158,11 @@ Parameters example for POST action (sent in the body of the request in JSON form
 
 ```
 { 
-	"post_id:": 1,
+  "post_id:": 1,
   "text": "my first comment" 
 }
 ```
-Example Response :
+Return value: added comment. Example Response :
 
 ``` 
 {
@@ -174,7 +181,7 @@ Allowed actions:
 
 - GET gets all the comments
 
-Mandatory parameters for POST action:
+Mandatory parameters for GET action:
 
 - post_id: id of the post the user comments to
 - user_id: id of the user
@@ -183,11 +190,11 @@ Parameters example for GET action (sent in the body of the request in JSON forma
 
 ```
 { 
-	"post_id:": 1,
+  "post_id:": 1,
   "user_id": 2 
 }
 ```
-Example Response :
+Return value: list of comments. Example Response :
 
 ``` 
 [
