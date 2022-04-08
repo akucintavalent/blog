@@ -1,4 +1,8 @@
 class CommentsController < ApplicationController
+  skip_before_action :authenticate_request
+  before_action :authenticate_request, only: [:add_comment]
+  protect_from_forgery with: :null_session, only: [:add_comment]
+
   def create
     @comment = current_user.comments.new(comment_params)
 
@@ -18,6 +22,39 @@ class CommentsController < ApplicationController
     comment.destroy
     flash[:notice] = 'Comment was successfully removed'
     redirect_to request.path
+  end
+
+  # rubocop:disable Naming/AccessorMethodName
+
+  def get_comments
+    user = User.where(id: params[:user_id])[0]
+
+    respond_to do |format|
+      if user
+        post = user.posts.where(id: params[:post_id])[0]
+        if post
+          format.json { render json: post.comments }
+        else
+          format.json { render json: { success: false, message: ['Post must exist'] } }
+        end
+      else
+        format.json { render json: { success: false, message: ['User must exist'] } }
+      end
+    end
+  end
+
+  # rubocop:enable Naming/AccessorMethodName
+
+  def add_comment
+    comment = Comment.new(author: @curr_user, post_id: params[:post_id], text: params[:text])
+
+    respond_to do |format|
+      if comment.save
+        format.json { render json: comment }
+      else
+        format.json { render json: { success: false, message: comment.errors.full_messages } }
+      end
+    end
   end
 
   private

@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  skip_before_action :authenticate_request
+
   def index; end
 
   def show
@@ -32,6 +34,22 @@ class PostsController < ApplicationController
     splitted_path.pop if splitted_path.length == 7 # If the user removed the post while being on its page
     redirect_to params[:url]
   end
+
+  # rubocop:disable Naming/AccessorMethodName
+
+  def get_posts
+    user = User.where(id: params[:user_id])[0]
+
+    respond_to do |format|
+      if user
+        format.json { render json: user.posts }
+      else
+        format.json { render json: { success: false, message: ['User must exist'] } }
+      end
+    end
+  end
+
+  # rubocop:enable Naming/AccessorMethodName
 
   private
 
