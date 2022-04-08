@@ -83,3 +83,6 @@ gem 'rails-controller-testing'
 gem 'devise'
 
 gem 'cancancan'
+
+gem 'jwt'
+gem 'bcrypt', '~> 3.1.7'
