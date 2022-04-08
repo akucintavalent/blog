@@ -35,13 +35,17 @@ class PostsController < ApplicationController
     redirect_to params[:url]
   end
 
+  # rubocop:disable Naming/AccessorMethodName
+
   def get_posts
     user = User.find(params[:user_id])
-    
+
     respond_to do |format|
       format.json { render json: user.posts }
     end
-  end 
+  end
+
+  # rubocop:enable Naming/AccessorMethodName
 
   private
 

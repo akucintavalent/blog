@@ -24,6 +24,8 @@ class CommentsController < ApplicationController
     redirect_to request.path
   end
 
+  # rubocop:disable Naming/AccessorMethodName
+
   def get_comments
     post = User.find(params[:user_id]).posts.find(params[:post_id])
 
@@ -32,6 +34,8 @@ class CommentsController < ApplicationController
     end
   end
 
+  # rubocop:enable Naming/AccessorMethodName
+
   def add_comment
     comment = Comment.new(author: @curr_user, post_id: params[:post_id], text: params[:text])
 
@@ -39,7 +43,7 @@ class CommentsController < ApplicationController
       if comment.save
         format.json { render json: comment }
       else
-        format.json { render json: { :success => false, :message => comment.errors.full_messages} }
+        format.json { render json: { success: false, message: comment.errors.full_messages } }
       end
     end
   end
