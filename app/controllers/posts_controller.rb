@@ -41,7 +41,11 @@ class PostsController < ApplicationController
     user = User.find(params[:user_id])
 
     respond_to do |format|
-      format.json { render json: user.posts }
+      if user
+        format.json { render json: user.posts }
+      else
+        format.json { render json: { success: false, message: ['User doesn\'t exist'] } }
+      end
     end
   end
 
