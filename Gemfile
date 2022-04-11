@@ -86,3 +86,5 @@ gem 'cancancan'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
+
+gem 'rswag'

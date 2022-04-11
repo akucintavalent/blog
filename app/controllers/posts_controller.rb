@@ -38,13 +38,17 @@ class PostsController < ApplicationController
   # rubocop:disable Naming/AccessorMethodName
 
   def get_posts
-    user = User.where(id: params[:user_id])[0]
+    id = 0
+    params.each_pair do |key, value|
+      id = JSON.parse(key)['user_id'] if value.nil?
+    end
+    user = User.where(id: id || params[:user_id])[0]
 
     respond_to do |format|
       if user
         format.json { render json: user.posts }
       else
-        format.json { render json: { success: false, message: ['User must exist'] } }
+        format.json { render json: { success: false, message: ['User must exist'] }, status: 404 }
       end
     end
   end
