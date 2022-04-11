@@ -1,0 +1,9 @@
+<section class="d-flex w-100 pt-5 justify-content-center">
+  <ul class="w-50 list-inline">
+    <% User.all.each do |user| %>
+      <li>
+        <%= render partial: 'users/user_card', locals: { user: user } %>
+      </li>
+    <% end %>
+  </ul>
+</section>

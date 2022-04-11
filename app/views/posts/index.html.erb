@@ -1,0 +1,22 @@
+<section class="d-flex w-100 pt-5 pb-5 justify-content-center">
+  <div class="w-50">
+    <% user = User.where(id: params[:user_id])[0] %>
+    <% if user %>
+      <%= render partial: 'users/user_card', locals: { user: user } %>
+      <ul class="w-100 list-inline">
+        <% user.posts.each do |post| %>
+          <li class="w-100 mb-4">
+            <%= render partial: 'posts/post', locals: { user: user, post: post, show_author: false } %>
+            <div class="mt-4">
+              <% post.last_5_comments.each do |comment| %>
+                <%= render partial: 'posts/comment', locals: { comment: comment } %>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h2>There is no user with id = <%= params[:user_id] %></h2>
+    <% end %>
+  </div>
+</section>

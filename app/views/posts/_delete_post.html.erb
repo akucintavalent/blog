@@ -1,0 +1,7 @@
+<% unless current_user.nil? || cannot?(:destroy, post) %>
+  <%= form_with url: url, class: 'm-0 p-0 remove-post', method: :delete do |form| %>
+    <%= form.hidden_field :post_id, value: post.id %>
+    <%= form.hidden_field :url, value: request.url %>
+    <%= button_to '', '#', class: 'm-0 p-0 fa-solid fa-trash-can mx-1 btn', onclick: 'Rails.fire(this.parentNode, \'submit\')' %>
+  <% end %>
+<% end %>
